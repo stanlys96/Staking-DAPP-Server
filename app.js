@@ -1,3 +1,6 @@
+const express = require('express');
+const app = express();
+const cors = require('cors');
 const { ethers } = require('ethers');
 const CronJob = require('cron').CronJob;
 const TokenFarm = require('./chain-info/contracts/TokenFarm.json');
@@ -35,3 +38,13 @@ const job = new CronJob(
   null,
   true
 );
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(cors());
+
+const PORT = process.env.PORT || 3001;
+
+app.listen(PORT, () => {
+  console.log(`Server started on port: ${PORT}...`);
+});
