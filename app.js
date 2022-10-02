@@ -24,7 +24,7 @@ const tokenFarmContract = new ethers.Contract(
 );
 
 const job = new CronJob(
-  '* * * * *',
+  '0 0 * * *',
   () => {
     tokenFarmContract
       .issueRewards()
